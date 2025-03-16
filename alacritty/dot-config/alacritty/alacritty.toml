@@ -1,0 +1,14 @@
+[general]
+import = [
+"themes/tokyo-fork.toml"
+]
+
+[window]
+opacity = 0.9
+
+[font]
+normal = { family = "JetBrainsMono Nerdfont", style="Regular"}
+bold = { family = "JetBrainsMono Nerdfont", style="Bold"}
+italic = { family = "JetBrainsMono Nerdfont", style="Italic"}
+bold_italic = { family = "JetBrainsMono Nerdfont", style="BoldItalic"}
+size = 13

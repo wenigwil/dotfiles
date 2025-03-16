@@ -1,0 +1,37 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+HISTCONTROL=ignoreboth
+
+shopt -s histappend
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+alias pclip='xclip -out -selection "clipboard"'
+alias cclip='xclip -selection "clipboard"'
+alias ll='ls --group-directories-first --no-group --human-readable -Ag'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# WHI="\[$(tput setaf 7)\]"
+# RED="\[$(tput setaf 1)\]"
+# YEL="\[$(tput setaf 3)\]"
+# MAG="\[$(tput setaf 5)\]"
+# RES="\[$(tput setaf sgr0)\]"
+# BOL="\[$(tput setaf bold)\]"
+#
+# PS1="${BOL}${MAG}\u${WHI}@${YEL}\h:${BLU}\W${RES}${WHI}\$ ${RES}  "
+CYAF="\[$(tput setaf 6)\]"
+WHIF="\[$(tput setaf 7)\]"
+BLUF="\[$(tput setaf 4)\]"
+YELF="\[$(tput setaf 3)\]"
+MAGF="\[$(tput setaf 5)\]"
+RES="\[$(tput setaf sgr0)\]"
+BOL="\[$(tput setaf bold)\]"
+
+PS1="${BOL}${MAGF}\u${WHIF}@${YELF}\h${WHIF}:${BLUF}\W${RES}${CYAF}\$ ${RES}"
