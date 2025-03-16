@@ -35,3 +35,4 @@ RES="\[$(tput setaf sgr0)\]"
 BOL="\[$(tput setaf bold)\]"
 
 PS1="${BOL}${MAGF}\u${WHIF}@${YELF}\h${WHIF}:${BLUF}\W${RES}${CYAF}\$ ${RES}"
+neofetch
