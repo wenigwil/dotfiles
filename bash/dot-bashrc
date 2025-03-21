@@ -35,3 +35,8 @@ RES="\[$(tput setaf sgr0)\]"
 BOL="\[$(tput setaf bold)\]"
 
 PS1="${BOL}${MAGF}\u${WHIF}@${YELF}\h${WHIF}:${BLUF}\W${RES}${CYAF}\$ ${RES}"
+
+# Adding TeX related things to the path
+export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info":$INFOPATH
+export MANPATH="/usr/local/texlive/2025/texmf-dist/doc/man":$MANPATH
+export PATH="/usr/local/texlive/2025/bin/x86_64-linux":$PATH
