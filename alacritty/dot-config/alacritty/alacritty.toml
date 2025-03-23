@@ -5,6 +5,10 @@ import = [
 
 [window]
 opacity = 0.8
+padding = { x = 0, y = 0}
+dynamic_padding = false
+decorations = "None"
+
 
 [font]
 normal = { family = "JetBrainsMono Nerdfont", style="Regular"}
