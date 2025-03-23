@@ -23,8 +23,8 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
-    Key([mod, "shift"], "h", lazy.layout.grow_main(), desc="Grow window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shrink_main(), desc="Grow window to the right"),
+    Key([mod, "shift"], "h", lazy.layout.shrink_main(), desc="Grow window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.grow_main(), desc="Grow window to the right"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
 
@@ -39,11 +39,86 @@ keys = [
     Key([mod], "XF86AudioRaiseVolume", lazy.spawn("pacmd set-default-sink 2")),
 ]
 
+def giveMonad(splitratio, automax = True):
+    return layout.MonadTall(
+        align = 0,
+        auto_maximize = automax,
+        border_focus = '#ff9e64',
+        border_normal = '#3d59a1',
+        border_width = 4,
+        ratio = splitratio,
+        new_client_position = "bottom",
+        min_secondary_size = 130,
+        )
 
+
+regularMonad = layout.MonadTall(
+        align = 0,
+        auto_maximize = True,
+        border_focus = '#ff9e64',
+        border_normal = '#3d59a1',
+        border_width = 4,
+        ratio = 2/3,
+        new_client_position = "bottom",
+        min_secondary_size = 130,
+        )
+
+texMonad = layout.MonadTall(
+        align = 0,
+        auto_maximize = True,
+        border_focus = '#ff9e64',
+        border_normal = '#3d59a1',
+        border_width = 4,
+        ratio = 0.708,
+        new_client_position = "bottom",
+        min_secondary_size = 100,
+        )
+
+# Default Fallback Monad Layout
+layouts = [
+        regularMonad
+]
 
 
 # Initialize all "desktops"
-groups = [Group(i) for i in ['TeX','Res','Ink','Cod','Sys','Misc']]
+# groups = [Group(i) for i in ['TeX','Res','Ink','Code','Sys','Misc']]
+groups = [
+        Group(
+            "Sys",
+            layouts = [giveMonad(0.5)],
+            ),
+        Group(
+            "Code",
+            layouts = [giveMonad(0.66)],
+            ),
+        # Workspace for TeX
+        Group(
+            "TeX",
+            layouts = [giveMonad(0.708)],
+            ),
+        # Workspace for translation, synonyms and lookup
+        Group(
+            "Syn",
+            layouts = [giveMonad(0.708)],
+            ),
+        # Research workspace
+        Group(
+            "Res",
+            layouts = [giveMonad(0.5)]
+            ),
+        # Media Workspace for Inkscape Workflow
+        Group(
+            "Ink",
+            layouts = [giveMonad(2/3, automax=False)],
+            ),
+        Group(
+            "Med",
+            layouts = [giveMonad(0.5)]
+            ),
+        ]
+
+
+
 
 for index, i in enumerate(groups):
     keys.extend(
@@ -62,20 +137,8 @@ for index, i in enumerate(groups):
                 lazy.window.togroup(i.name, switch_group=True),
                 desc=f"Switch to & move focused window to group {i.name}",
             )])
-            # Or, use below if you prefer not to switch to that group.
-layouts = [
-    layout.MonadTall(
-        align = 0,
-        auto_maximize = True,
-        border_focus = '#ff9e64',
-        border_normal = '#3d59a1',
-        border_width = 4,
-        ratio = 2/3,
-        new_client_position = "bottom",
-        min_secondary_size = 130,
-        ),
-    layout.TreeTab(),
-]
+
+
 
 widget_defaults = dict(
     font="JetBrains Mono Bold",
@@ -90,6 +153,18 @@ screens = [
             [
                 widget.GroupBox(
                     fontsize=14,
+                    block_highlight_text_color="ff007c",
+                    center_aligned=True,
+                    disable_drag=True,
+                    highlight_color='292e42',
+                    highlight_method='line',
+                    this_current_screen_border='ff007c',
+                    this_screen_border='ff007c',
+                    use_mouse_wheel=False,
+                    visible_groups=['Sys'],
+                    ),
+                widget.GroupBox(
+                    fontsize=14,
                     block_highlight_text_color="ff9e64",
                     center_aligned=True,
                     disable_drag=True,
@@ -98,6 +173,7 @@ screens = [
                     this_current_screen_border='ff9e64',
                     this_screen_border='ff9e64',
                     use_mouse_wheel=False,
+                    visible_groups=[group.name for group in groups[1:]],
                     ),
                 widget.Prompt(
                     cursor=True,
