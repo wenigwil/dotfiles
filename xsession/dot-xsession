@@ -1,3 +1,4 @@
+pacman -Qe >> ~/dotfiles/installed.txt
 nitrogen --restore &
 picom &
 exec qtile start
