@@ -1,4 +1,6 @@
-pacman -Qe >> ~/dotfiles/installed.txt
+xset dpms 3600 3600 3600
+xset -dpms
+pacman -Qe > ~/dotfiles/installed.txt
 nitrogen --restore &
 picom &
 exec qtile start
