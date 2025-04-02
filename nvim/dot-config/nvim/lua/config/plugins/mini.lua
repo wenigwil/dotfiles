@@ -21,6 +21,15 @@ return {
                 }
             }
             move.setup(move_setup)
+
+            -- Configuring the SURROUND of mini.nvim
+            -- USEFUL KEYBINDS:
+            -- ----------------
+            -- saiw) - add (sa) for inner word (iw) parenthesis )
+            -- sdb OR srb - delete OR replace surrounding bracket
+            -- sdq OR srq - delete OR replace surrounding quotes
+            local surround = require('mini.surround')
+            surround.setup()
         end,
     }
 }
