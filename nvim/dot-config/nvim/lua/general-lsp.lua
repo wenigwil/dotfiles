@@ -45,4 +45,4 @@ vim.lsp.config('*', {
     end,
 })
 
-vim.lsp.enable({ "luals" })
+vim.lsp.enable({ "luals", "bashls", "latexls" })

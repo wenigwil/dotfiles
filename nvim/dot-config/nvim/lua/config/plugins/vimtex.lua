@@ -5,11 +5,9 @@
 -- Use ftplugin/tex.lua for configs specific to
 -- a tex-buffer.
 return {
-    {
-        "lervag/vimtex",
-        lazy = false,
-        init = function()
-            vim.g.vimtex_view_general_viewer = 'zathura'
-        end
-    }
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+        vim.g.vimtex_view_general_viewer = 'zathura'
+    end
 }

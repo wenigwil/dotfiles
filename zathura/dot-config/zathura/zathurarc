@@ -5,7 +5,9 @@ set selection-clipboard clipboard
 map D set "first-page-column 1:1"
 map <C-d> set "first-page-column 1:2"
 map b adjust_window best-fit
-
+# TeXLab configurations
+set synctex true
+set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"
 # Tokyonight color theme
 #
 set notification-error-bg "#f7768e"
