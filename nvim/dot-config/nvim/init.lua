@@ -1,5 +1,7 @@
 require("config.lazy")
 
+-- General LSP-config for all clients go here
+require("general-lsp")
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
