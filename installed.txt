@@ -38,6 +38,8 @@ openssh 9.9p2-1
 os-prober 1.83-1
 pass 1.7.4-7
 passff-host 1:1.2.5-1
+perl-file-homedir 1.006-6
+perl-yaml-tiny 1.76-1
 picom 12.5-1
 playerctl 2.4.1-4
 pulseaudio 17.0+r43+g3e2bb8a1e-1
@@ -47,10 +49,12 @@ shellcheck 0.10.0-35
 shfmt 3.11.0-1
 stow 2.4.1-1
 sudo 1.9.16.p2-2
+texlab 5.22.0-1
 thunar 4.20.2-1
 thunderbird 137.0-1
 tldr 3.3.0-2
 tree 2.2.1-1
+tree-sitter-cli 0.25.3-1
 ttf-hack-nerd 3.3.0-1
 ttf-jetbrains-mono 2.304-2
 ttf-jetbrains-mono-nerd 3.3.0-1
