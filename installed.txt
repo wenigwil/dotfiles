@@ -22,14 +22,14 @@ less 1:668-1
 linux 6.13.8.arch1-1
 linux-firmware 20250311.b69d4b74-3
 lua-language-server 3.13.9-1
-ly 1.0.3-1
+ly 1.0.3-2
 man-db 2.13.0-1
 man-pages 6.13-1
 mtools 1:4.0.48-1
 neofetch 7.1.0-2
 neovim 0.11.0-2
 networkmanager 1.52.0-1
-nextcloud-client 2:3.16.2-2
+nextcloud-client 2:3.16.2-3
 nitrogen 1.6.1-6
 noto-fonts 1:2025.04.01-1
 noto-fonts-emoji 1:2.047-1
@@ -51,7 +51,7 @@ stow 2.4.1-1
 sudo 1.9.16.p2-2
 texlab 5.22.0-1
 thunar 4.20.2-1
-thunderbird 137.0-1
+thunderbird 137.0.1-1
 tldr 3.3.0-2
 tree 2.2.1-1
 tree-sitter-cli 0.25.3-1
