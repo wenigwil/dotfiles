@@ -1,14 +1,12 @@
 -- General LSP client config that will be applied
 -- to all clients
 
+
+-- CMP capabilities which override default nvim omnifunc behavior
+
+vim.opt.completeopt = { "popup", "noinsert", "fuzzy", "menu", "menuone" }
+
 vim.lsp.config('*', {
-    capabilities = {
-        textDocument = {
-            semanticTokens = {
-                multilineTokenSupport = true,
-            }
-        }
-    },
     root_markers = { '.git' },
     -- Format on writing
     on_attach = function(client, bufnr)
@@ -33,7 +31,7 @@ vim.lsp.config('*', {
             })
         end
 
-        if client.supports_method('textDocument/publishDiagnostics') then
+        if client:supports_method('textDocument/publishDiagnostics') then
             local client_namespace = vim.lsp.diagnostic.get_namespace(client.id)
             vim.diagnostic.config({
                     virtual_text  = true,
@@ -42,7 +40,12 @@ vim.lsp.config('*', {
                 },
                 client_namespace)
         end
+
+        -- if client:supports_method('textDocument/completion') then
+        --     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+        -- end
     end,
 })
 
 vim.lsp.enable({ "luals", "bashls", "latexls" })
+
