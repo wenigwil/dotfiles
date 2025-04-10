@@ -20,7 +20,7 @@ return {
         -- Dont show docs automatically
         completion = {
             documentation = {
-                auto_show = false
+                auto_show = true,
             },
             list = {
                 selection = {
@@ -29,6 +29,24 @@ return {
                     auto_insert = false,
                 },
             },
+        },
+        cmdline = {
+            keymap = {
+                preset = 'inherit',
+            },
+            completion = {
+                menu = {
+                    auto_show = false,
+                },
+                list = {
+                    selection = {
+                        -- When `true`, will automatically select the first item in the completion list
+                        preselect = true,
+                        auto_insert = false,
+                    },
+                },
+            },
+
         },
         -- Use luasnip preset
         snippets = { preset = 'luasnip' },

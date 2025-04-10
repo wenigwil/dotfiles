@@ -8,9 +8,7 @@ local s = ls.snippet
 local sn = ls.snippet_node
 local t = ls.text_node
 local i = ls.insert_node
-local f = ls.function_node
 local d = ls.dynamic_node
-local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 
 
@@ -18,26 +16,66 @@ return {
 
     -- Bold
     s({ trig = 'bo' },
-        fmta('**<>** <>',
+        fmta('**<>**<>',
             { d(1, get_visual), i(0) })
     ),
 
     -- Italics
     s({ trig = 'it' },
-        fmta('*<>* <>',
+        fmta('*<>*<>',
             { d(1, get_visual), i(0) })
     ),
 
     -- Bold+Italics
-    s({ trig = 'bi' },
-        fmta('***<>*** <>',
+    s({ trig = 'boit' },
+        fmta('***<>***<>',
             { d(1, get_visual), i(0) })
     ),
 
-    -- Link
-    s({ trig = "ff", snippetType = "autosnippet" },
-        fmta("[<>](<> \"<>\") <>",
+    -- Crossed out
+    s({ trig = 'co' },
+        fmta('~~<>~~<>',
+            { d(1, get_visual), i(0) })
+    ),
+
+    -- Promt
+    s({ trig = 'p' },
+        fmta('`<>`<>',
+            { d(1, get_visual), i(0) })
+    ),
+
+    -- Link with mask
+    s({ trig = "ff" },
+        fmta("[<>](<>)<>",
+            { d(1, get_visual), i(2, "URL"), i(0) })
+    ),
+
+    -- Link with mask and title
+    s({ trig = "fff" },
+        fmta("[<>](<> \"<>\")<>",
             { d(1, get_visual), i(2, "URL"), i(3, "TITLE"), i(0) })
     ),
+
+    -- Picture with description and title
+    s({ trig = "pic" },
+        fmta("![<>](<> \"<>\")<>",
+            { d(1, get_visual), i(2, "URL"), i(3, "TITLE"), i(0) })
+    ),
+
+
+    -- Codeblock
+    s(
+        { trig = "cb" },
+        fmta(
+            [[
+        ~~~<>
+        <>
+        ~~~
+        <>
+        ]],
+            { i(1), i(2), i(0) }
+        )
+    ),
+
 
 }

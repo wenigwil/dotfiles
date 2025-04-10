@@ -25,26 +25,47 @@ return {
         -- This is just for making telescope search faster
         require('telescope').load_extension('fzf')
         require('telescope').load_extension('nerdy')
+        local tc_builtin = require('telescope.builtin')
 
-        vim.keymap.set("n", "<space>sh", require('telescope.builtin').help_tags)
+
+        vim.keymap.set("n", "<space>sh", tc_builtin.help_tags)
+
         vim.keymap.set("n", "<space>sn", function()
-            require('telescope.builtin').find_files({
+            tc_builtin.find_files({
                 cwd = vim.fn.stdpath('config')
             })
         end)
 
-
         vim.keymap.set("n", "<space>nf", function()
-            require('telescope').extensions.nerdy.nerdy()
+            tc_builtin.extensions.nerdy.nerdy()
         end)
+
         vim.keymap.set("n", "<space>sd", function()
-            require('telescope.builtin').find_files({
-                cwd = "/home/wenigwil/Documents"
+            tc_builtin.find_files()
+        end)
+
+        vim.keymap.set("n", "<space>sp", function()
+            tc_builtin.find_files({
+                cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
             })
         end)
-        vim.keymap.set("n", "<space>sp", function()
-            require('telescope.builtin').find_files({
-                cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+
+        -- Go list references
+        vim.keymap.set("n", "<space>gr", function()
+            tc_builtin.lsp_references()
+        end)
+
+        -- Go list definitions
+        vim.keymap.set("n", "<space>gd", function()
+            tc_builtin.lsp_definitions({
+                jump_type = "never"
+            })
+        end)
+
+        -- Go list implementations
+        vim.keymap.set("n", "<space>gi", function()
+            tc_builtin.lsp_implementations({
+                jump_type = "never"
             })
         end)
     end

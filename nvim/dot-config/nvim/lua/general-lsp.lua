@@ -3,7 +3,6 @@
 
 
 -- CMP capabilities which override default nvim omnifunc behavior
-
 vim.opt.completeopt = { "popup", "noinsert", "fuzzy", "menu", "menuone" }
 
 vim.lsp.config('*', {
@@ -41,11 +40,15 @@ vim.lsp.config('*', {
                 client_namespace)
         end
 
+
+        -- Completion is handled by blink.cmp because it is easier and better
         -- if client:supports_method('textDocument/completion') then
         --     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
         -- end
+
+
+
     end,
 })
 
 vim.lsp.enable({ "luals", "bashls", "latexls" })
-
