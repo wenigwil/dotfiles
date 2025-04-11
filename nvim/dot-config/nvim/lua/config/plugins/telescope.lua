@@ -37,7 +37,7 @@ return {
         end)
 
         vim.keymap.set("n", "<space>nf", function()
-            tc_builtin.extensions.nerdy.nerdy()
+            require('telescope').extensions.nerdy.nerdy()
         end)
 
         vim.keymap.set("n", "<space>sd", function()

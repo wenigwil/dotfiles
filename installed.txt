@@ -25,6 +25,7 @@ lua-language-server 3.13.9-1
 ly 1.0.3-2
 man-db 2.13.0-1
 man-pages 6.13-1
+marksman 20241218-1
 mtools 1:4.0.48-1
 neofetch 7.1.0-2
 neovim 0.11.0-2

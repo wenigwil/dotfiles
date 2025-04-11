@@ -36,7 +36,7 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([mod], "XF86AudioLowerVolume", lazy.spawn("pacmd set-default-sink 1")),
-    Key([mod], "XF86AudioRaiseVolume", lazy.spawn("pacmd set-default-sink 3")),
+    Key([mod], "XF86AudioRaiseVolume", lazy.spawn("pacmd set-default-sink 2")),
 ]
 
 def giveMonad(splitratio, automax = True):

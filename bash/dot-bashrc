@@ -12,20 +12,32 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Small function for copying codeheadings to clipboard
+codeheading()
+{
+    if [[ $1 == "small" ]]; then
+        codeheadingfont="smslant"
+        chspaces='    '
+    elif [[ $1 == "big" ]]; then
+        codeheadingfont="standard"
+        chspaces=' '
+    else
+        echo "CODEHEADING ERROR: First argument has be either small or big"
+        return
+    fi
+    figlet -k -f "$codeheadingfont" "$3" | sed "s/^/${2}${chspaces}/" | xclip -selection "clipboard"
+    echo "CODEHEADING: Copied the heading to clipboard"
+}
+
 alias pclip='xclip -out -selection "clipboard"'
 alias cclip='xclip -selection "clipboard"'
 alias ll='ls --group-directories-first --no-group --human-readable -Ag'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nexclosyn='nextcloudcmd --non-interactive -u wenigwil -p $(pass cloud/cloud.wenigwil.com) $HOME/wumbo https://cloud.wenigwil.com/'
-# WHI="\[$(tput setaf 7)\]"
-# RED="\[$(tput setaf 1)\]"
-# YEL="\[$(tput setaf 3)\]"
-# MAG="\[$(tput setaf 5)\]"
-# RES="\[$(tput setaf sgr0)\]"
-# BOL="\[$(tput setaf bold)\]"
-#
-# PS1="${BOL}${MAG}\u${WHI}@${YEL}\h:${BLU}\W${RES}${WHI}\$ ${RES}  "
+alias chsmalltex='codeheading "small" "%"'
+alias chbigtex='codeheading "big" "%"'
+
 CYAF="\[$(tput setaf 6)\]"
 WHIF="\[$(tput setaf 7)\]"
 BLUF="\[$(tput setaf 4)\]"
