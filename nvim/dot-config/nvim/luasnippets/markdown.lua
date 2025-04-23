@@ -77,5 +77,10 @@ return {
         )
     ),
 
+    -- Task
+    s({ trig = "do" },
+        fmta("- [ ] <>",
+            { d(1, get_visual) })
+    ),
 
 }

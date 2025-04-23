@@ -1,3 +1,4 @@
+setxkbmap -layout de -variant us
 xset dpms 3600 3600 3600
 xset -dpms
 xset r rate 270 30

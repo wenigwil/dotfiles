@@ -36,6 +36,12 @@ return {
             })
         end)
 
+        vim.keymap.set("n", "<space>sf", function()
+            tc_builtin.find_files({
+                cwd = vim.fs.joinpath("/home", "wenigwil", "wumbo", "Notes")
+            })
+        end)
+
         vim.keymap.set("n", "<space>nf", function()
             require('telescope').extensions.nerdy.nerdy()
         end)

@@ -45,10 +45,7 @@ vim.lsp.config('*', {
         -- if client:supports_method('textDocument/completion') then
         --     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
         -- end
-
-
-
     end,
 })
 
-vim.lsp.enable({ "luals", "bashls", "latexls" })
+vim.lsp.enable({ "luals", "bashls", "latexls", "markdownls" })
