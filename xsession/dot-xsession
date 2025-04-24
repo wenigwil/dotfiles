@@ -1,7 +1,7 @@
 setxkbmap -layout de -variant us
 xset dpms 3600 3600 3600
 xset -dpms
-xset r rate 270 30
+xset r rate 260 30
 pacman -Qe > ~/dotfiles/installed.txt
 nitrogen --restore &
 picom &

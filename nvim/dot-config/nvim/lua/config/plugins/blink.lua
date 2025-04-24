@@ -7,13 +7,19 @@ return {
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
     -- build = 'nix run .#build-plugin',
-    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.3.0' },
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
         -- Use the nvim style comp interaction keymaps
-        keymap = { preset = 'default' },
+        keymap = {
+            preset = 'default',
+            -- Unbind these to avoid conflict with
+            -- the config in LuaSnip super-tab
+            ['<Tab>'] = {},
+            ['<S-Tab>'] = {},
+        },
         appearance = {
             nerd_font_variant = 'mono'
         },

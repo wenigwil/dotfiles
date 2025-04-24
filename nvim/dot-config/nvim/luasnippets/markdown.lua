@@ -56,6 +56,12 @@ return {
             { d(1, get_visual), i(2, "URL"), i(3, "TITLE"), i(0) })
     ),
 
+    -- Task
+    s({ trig = "do" },
+        fmta("- [ ] <>",
+            { d(1, get_visual) })
+    ),
+
     -- Picture with description and title
     s({ trig = "pic" },
         fmta("![<>](<> \"<>\")<>",
@@ -75,12 +81,6 @@ return {
         ]],
             { i(1), i(2), i(0) }
         )
-    ),
-
-    -- Task
-    s({ trig = "do" },
-        fmta("- [ ] <>",
-            { d(1, get_visual) })
     ),
 
 }
