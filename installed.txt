@@ -39,6 +39,7 @@ nitrogen 1.6.1-6
 noto-fonts 1:2025.04.01-1
 noto-fonts-emoji 1:2.047-1
 npm 11.3.0-1
+nvidia 570.144-1
 openssh 10.0p1-3
 os-prober 1.83-1
 pass 1.7.4-7

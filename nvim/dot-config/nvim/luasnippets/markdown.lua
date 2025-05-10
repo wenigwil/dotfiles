@@ -10,6 +10,7 @@ local t = ls.text_node
 local i = ls.insert_node
 local d = ls.dynamic_node
 local fmta = require("luasnip.extras.fmt").fmta
+local fmt = require("luasnip.extras.fmt").fmt
 
 
 return {
@@ -68,6 +69,20 @@ return {
             { d(1, get_visual), i(2, "URL"), i(3, "TITLE"), i(0) })
     ),
 
+
+    -- Github-style alerts
+    s(
+        { trig = "gsa" },
+        fmt(
+            [[
+        >[!{}]
+        > {}
+
+        {}
+        ]],
+            { i(1), i(2), i(0) }
+        )
+    ),
 
     -- Codeblock
     s(

@@ -3,7 +3,7 @@
 
 
 -- CMP capabilities which override default nvim omnifunc behavior
-vim.opt.completeopt = { "popup", "noinsert", "fuzzy", "menu", "menuone" }
+vim.opt.completeopt = { "fuzzy", "popup", "noinsert", "menu", "menuone" }
 
 vim.lsp.config('*', {
     root_markers = { '.git' },
@@ -48,4 +48,4 @@ vim.lsp.config('*', {
     end,
 })
 
-vim.lsp.enable({ "luals", "bashls", "latexls", "markdownls" })
+vim.lsp.enable({ "luals", "bashls", "latexls", "markdownls", "julials" })
