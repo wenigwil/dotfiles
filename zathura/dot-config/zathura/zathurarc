@@ -1,4 +1,4 @@
-set guioptions none
+# set guioptions none
 set selection-clipboard clipboard
 # set default-bg "#1f2335"
 
