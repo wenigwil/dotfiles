@@ -27,6 +27,15 @@ return {
             { d(1, get_visual), i(0) })
     ),
 
+    -- Variable for code analysis
+    s({ trig = 'var' },
+        fmta([[
+        - **`<>`** *`<>`*
+            - <>
+        ]],
+            { i(1, "VARNAME"), i(2, 'TYPE'), i(0, 'DESCRIPTION') })
+    ),
+
     -- Bold+Italics
     s({ trig = 'boit' },
         fmta('***<>***<>',
@@ -35,7 +44,7 @@ return {
 
     -- Crossed out
     s({ trig = 'co' },
-        fmta('~~<>~~<>',
+        fmta([['~~<>~~<>']],
             { d(1, get_visual), i(0) })
     ),
 
@@ -71,6 +80,8 @@ return {
 
 
     -- Github-style alerts
+    -- Vivify renders the following:
+    -- NOTE, TIP, IMPORTANT, WARNING, CAUTION
     s(
         { trig = "gsa" },
         fmt(

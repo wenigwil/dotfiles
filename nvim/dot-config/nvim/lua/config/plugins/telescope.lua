@@ -37,9 +37,19 @@ return {
         end)
 
         vim.keymap.set("n", "<space>sf", function()
-            tc_builtin.find_files({
-                cwd = vim.fs.joinpath("/home", "wenigwil", "wumbo", "Notes")
+            tc_builtin.find_files()
+        end)
+
+        vim.keymap.set("n", "<space>sg", function()
+            tc_builtin.live_grep({
+                -- Search for types with
+                -- "rg --type-list | less"
+                type_filter = "fortran"
             })
+        end)
+
+        vim.keymap.set("n", "<space>sb", function()
+            tc_builtin.current_buffer_fuzzy_find()
         end)
 
         vim.keymap.set("n", "<space>nf", function()
