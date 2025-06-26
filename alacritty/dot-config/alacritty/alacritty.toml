@@ -4,7 +4,7 @@ import = [
 ]
 
 [window]
-opacity = 0.8
+opacity = 0.5
 padding = { x = 0, y = 0}
 dynamic_padding = false
 decorations = "None"
