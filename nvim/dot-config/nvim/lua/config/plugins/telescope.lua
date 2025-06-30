@@ -66,6 +66,15 @@ return {
             })
         end)
 
+        -- Opened-buffers List
+        vim.keymap.set("n", "<space>st", function()
+            tc_builtin.buffers({
+                sort_lastused = true,
+                ignore_current_buffer = true,
+            })
+        end)
+
+
         -- Go list references
         vim.keymap.set("n", "<space>gr", function()
             tc_builtin.lsp_references()

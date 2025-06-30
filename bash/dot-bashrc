@@ -29,6 +29,88 @@ codeheading()
     echo "CODEHEADING: Copied the heading to clipboard"
 }
 
+# Time difference between last commit
+commit_tdiff()
+{
+    local commit_time
+    local now_time
+    local tdiff
+    local tdiff_years
+    local tdiff_months
+    local tdiff_weeks
+    local tdiff_days
+    local tdiff_day_of_month
+    local tdiff_day_of_week
+    local tdiff_hours
+    local tdiff_minutes
+    local tdiff_seconds
+    # Get the time of the last commit as unix-timestamp
+    commit_time=$(git show -s --format=%ct HEAD)
+    # echo "COMMIT TIME $commit_time"
+    #
+    # Get the current time in unix-timestamp
+    now_time=$(date -d now +%s)
+    # echo "NOW TIME $now_time"
+    #
+    # Calculate the difference of the two times
+    # BUT rearrange the origin such that everyting is
+    # measured against the first year after 1970 where
+    # Jan 1 was a Monday
+    tdiff=$((now_time - commit_time + $(date -d "Jan 1 1973" +%s)))
+    # echo "TDIFF $tdiff"
+
+    # Years will begin at 0
+    tdiff_years=$(($(date -d @$tdiff +%G) - 1973))
+    # echo "Years $tdiff_years"
+
+    # Month will go from 0 to 11
+    tdiff_months=$(($(date -d @$tdiff +%m) - 1))
+    # echo "Months $tdiff_months"
+
+    # Weeks will go from 0 to 51
+    tdiff_weeks=$(($(date -d @$tdiff +%V) - 1))
+    # echo "Weeks $tdiff_weeks"
+
+    # # Day of week will go from 0 to 6
+    # # This will keep numbers small because hours will
+    # # only be used if the number of days is small
+    tdiff_day_of_week=$(($(date -d @$tdiff +%u) - 1))
+    # echo "Day of Week $tdiff_day_of_week"
+    tdiff_day_of_month=$(($(date -d @$tdiff +%d) - 1))
+    # echo "Day of Month $tdiff_day_of_month"
+
+    # # Days will go from 0 to 365
+    tdiff_days=$((tdiff_weeks * 7 + tdiff_day_of_week))
+    # echo "Days $tdiff_days"
+
+    # # Hours will go from 0 to 23
+    tdiff_hours=$(date -d @$tdiff +%H)
+    # echo "Hours $tdiff_hours"
+    # # Minutes will go from 0 to 59
+    tdiff_minutes=$(date -d @$tdiff +%M)
+    # echo "Minutes $tdiff_minutes"
+    # # Seconds will go from 0 to 59
+    tdiff_seconds=$(date -d @$tdiff +%S)
+    # echo "Seconds $tdiff_seconds"
+
+    # Display more than 3 days of no commits in hours
+    if ((tdiff_minutes < 1 && tdiff_hours == 0 && tdiff_years == 0)); then
+        echo "${tdiff_seconds}S"
+    elif ((tdiff_hours < 1 && tdiff_days == 0 && tdiff_years == 0)); then
+        echo "${tdiff_minutes}M"
+    elif ((tdiff_days < 3 && tdiff_years == 0)); then
+        echo "$((tdiff_day_of_week * 24 + tdiff_hours))H"
+        return
+    # THIS IS STILL BROKEN AND NEEDS TO BE FIXED
+    elif ((tdiff_weeks < 13 && tdiff_years == 0)); then
+        echo "${tdiff_weeks}W"
+        return
+    elif ((tdiff_years != 0)); then
+        echo "+${tdiff_years}Y"
+        return
+    fi
+}
+
 alias pclip='xclip -out -selection "clipboard"'
 alias cclip='xclip -selection "clipboard"'
 alias ll='ls --group-directories-first --no-group --human-readable -Ag'
