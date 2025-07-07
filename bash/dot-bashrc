@@ -6,7 +6,6 @@
 [[ $- != *i* ]] && return
 
 HISTCONTROL=ignoreboth
-
 shopt -s histappend
 
 HISTSIZE=1000
@@ -15,6 +14,9 @@ HISTFILESIZE=2000
 # Small function for copying codeheadings to clipboard
 codeheading()
 {
+    # $1 is either "small" or "big"
+    # $2 is the comment leader
+    # $3 is the heading text
     if [[ $1 == "small" ]]; then
         codeheadingfont="smslant"
         chspaces='    '
@@ -29,21 +31,41 @@ codeheading()
     echo "CODEHEADING: Copied the heading to clipboard"
 }
 
+bc_smaller()
+{
+    if (($(echo "$1 < $2" | bc) == 1)); then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+bc_bigger()
+{
+    if (($(echo "$1 > $2" | bc) == 1)); then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+check_gitrepo()
+{
+    gitcheck=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+    if [ "$gitcheck" == "true" ]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
 # Time difference between last commit
 commit_tdiff()
 {
-    local commit_time
-    local now_time
-    local tdiff
-    local tdiff_years
-    local tdiff_months
-    local tdiff_weeks
-    local tdiff_days
-    local tdiff_day_of_month
-    local tdiff_day_of_week
-    local tdiff_hours
-    local tdiff_minutes
-    local tdiff_seconds
+    if (($(check_gitrepo) == 0)); then
+        echo "???"
+        return
+    fi
     # Get the time of the last commit as unix-timestamp
     commit_time=$(git show -s --format=%ct HEAD)
     # echo "COMMIT TIME $commit_time"
@@ -56,59 +78,54 @@ commit_tdiff()
     # BUT rearrange the origin such that everyting is
     # measured against the first year after 1970 where
     # Jan 1 was a Monday
-    tdiff=$((now_time - commit_time + $(date -d "Jan 1 1973" +%s)))
-    # echo "TDIFF $tdiff"
+    tdiff=$((now_time - commit_time))
 
-    # Years will begin at 0
-    tdiff_years=$(($(date -d @$tdiff +%G) - 1973))
-    # echo "Years $tdiff_years"
+    minutes_calc=$(echo "scale=6; $tdiff/60" | bc)
+    minutes=$(echo "scale=0; $tdiff/60" | bc)
+    hours_calc=$(echo "scale=6; $minutes_calc/60" | bc)
+    hours=$(echo "scale=1; $minutes/60" | bc)
+    days_calc=$(echo "scale=6; $hours_calc/24" | bc)
+    days=$(echo "scale=1; $hours/24" | bc)
+    months=$(echo "scale=0; $days_calc/31" | bc)
+    weeks=$(echo "scale=1; $days_calc/7" | bc)
+    years=$(echo "scale=1; $days_calc/365" | bc)
 
-    # Month will go from 0 to 11
-    tdiff_months=$(($(date -d @$tdiff +%m) - 1))
-    # echo "Months $tdiff_months"
-
-    # Weeks will go from 0 to 51
-    tdiff_weeks=$(($(date -d @$tdiff +%V) - 1))
-    # echo "Weeks $tdiff_weeks"
-
-    # # Day of week will go from 0 to 6
-    # # This will keep numbers small because hours will
-    # # only be used if the number of days is small
-    tdiff_day_of_week=$(($(date -d @$tdiff +%u) - 1))
-    # echo "Day of Week $tdiff_day_of_week"
-    tdiff_day_of_month=$(($(date -d @$tdiff +%d) - 1))
-    # echo "Day of Month $tdiff_day_of_month"
-
-    # # Days will go from 0 to 365
-    tdiff_days=$((tdiff_weeks * 7 + tdiff_day_of_week))
-    # echo "Days $tdiff_days"
-
-    # # Hours will go from 0 to 23
-    tdiff_hours=$(date -d @$tdiff +%H)
-    # echo "Hours $tdiff_hours"
-    # # Minutes will go from 0 to 59
-    tdiff_minutes=$(date -d @$tdiff +%M)
-    # echo "Minutes $tdiff_minutes"
-    # # Seconds will go from 0 to 59
-    tdiff_seconds=$(date -d @$tdiff +%S)
-    # echo "Seconds $tdiff_seconds"
-
-    # Display more than 3 days of no commits in hours
-    if ((tdiff_minutes < 1 && tdiff_hours == 0 && tdiff_years == 0)); then
-        echo "${tdiff_seconds}S"
-    elif ((tdiff_hours < 1 && tdiff_days == 0 && tdiff_years == 0)); then
-        echo "${tdiff_minutes}M"
-    elif ((tdiff_days < 3 && tdiff_years == 0)); then
-        echo "$((tdiff_day_of_week * 24 + tdiff_hours))H"
-        return
-    # THIS IS STILL BROKEN AND NEEDS TO BE FIXED
-    elif ((tdiff_weeks < 13 && tdiff_years == 0)); then
-        echo "${tdiff_weeks}W"
-        return
-    elif ((tdiff_years != 0)); then
-        echo "+${tdiff_years}Y"
+    if (($(bc_smaller "$minutes" "1") == 1)); then
+        echo "${tdiff}s"
         return
     fi
+
+    if (($(bc_smaller "$hours" "2") == 1)); then
+        echo "${minutes}min"
+        return
+    fi
+
+    if (($(bc_smaller "$days" "4") == 1)); then
+        echo "${hours}h"
+        return
+    fi
+
+    if (($(bc_smaller "$months" "1") == 1)); then
+        echo "${days}d"
+        return
+    fi
+    if (($(bc_smaller "$months" "3") == 1)); then
+        echo "${weeks}w"
+        return
+    fi
+    if (($(bc_smaller "$years" "1.08") == 1)); then
+        echo "${months}m"
+        return
+    fi
+    if (($(bc_bigger "$years" "1.08") == 1)); then
+        echo "${years}y"
+        return
+    fi
+}
+
+branch_name()
+{
+    git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
 alias pclip='xclip -out -selection "clipboard"'
@@ -127,8 +144,7 @@ YELF="\[$(tput setaf 3)\]"
 MAGF="\[$(tput setaf 5)\]"
 RES="\[$(tput setaf sgr0)\]"
 BOL="\[$(tput setaf bold)\]"
-
-PS1="${BOL}${MAGF}\u${WHIF}@${YELF}\h${WHIF}:${BLUF}\W${RES}${CYAF}\$ ${RES}"
+PS1="${BOL}${MAGF}\u${WHIF}@${YELF}\h${WHIF}:${BLUF}\W${RES}${CYAF}\$${RES} "
 
 # Adding TeX related things to the path
 export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info":$INFOPATH

@@ -13,8 +13,13 @@ vim.lsp.config('*', {
 
         -- Automatic formatting on save
         if client:supports_method('textDocument/formatting', bufnr) then
-            -- Just be sure and put it in its own group so commands dont pile up
-            local format_augroup_id = vim.api.nvim_create_augroup('FormatOnSave', {
+            -- Just be sure and put it in its own group so
+            -- commands dont pile up. BUT we have be
+            -- specific here: We do not want autocmds piling
+            -- up for each BUFFER. We will make a buffer
+            -- unique augroup each time on attach. We'll
+            -- just attach the bufnr to the aufgroup-name
+            local format_augroup_id = vim.api.nvim_create_augroup("FormatOnSave" .. bufnr, {
                 clear = true,
             })
             -- Turns out it is quite important to make the autocmd buffer-local

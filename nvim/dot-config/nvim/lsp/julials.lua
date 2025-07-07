@@ -38,9 +38,8 @@ local julia_lspenv_path = vim.fs.joinpath('/home/wenigwil/opt/', 'LanguageServer
 local julia_runlsp_file = vim.fs.joinpath(julia_lspenv_path, "lspconfig-runlsp.jl")
 
 return {
-    cmd                 = { 'julia', '--project=' .. julia_lspenv_path, julia_runlsp_file },
-    filetypes           = { "julia", "jl" },
-    root_markers        = { ".git", "Project.toml", "Manifest.toml", "JuliaProject.toml" },
-    capabilities        = create_capabilities(),
-    single_file_support = true
+    cmd          = { 'julia', '--project=' .. julia_lspenv_path, julia_runlsp_file },
+    filetypes    = { "julia", "jl" },
+    root_markers = { ".git", "Project.toml", "Manifest.toml", "JuliaProject.toml" },
+    capabilities = create_capabilities()
 }
