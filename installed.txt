@@ -46,6 +46,7 @@ openssh 10.0p1-3
 os-prober 1.83-1
 pass 1.7.4-7
 passff-host 1:1.2.5-3
+pdf2svg 0.2.4-1
 pdfarranger 1.12.1-1
 perl-file-homedir 1.006-6
 perl-yaml-tiny 1.76-1
