@@ -30,6 +30,47 @@ return {
             -- sdq OR srq - delete OR replace surrounding quotes
             local surround = require('mini.surround')
             surround.setup()
+
+            -- Configuring the a/i-TEXTOBJECTS of mini.nivm
+            -- USEFUL KEYBINDS:
+            -- ----------------
+            -- Select the previous <textobject> when some
+            -- textobject is currently selected
+            -- inner: il<text-object>
+            -- outer: al<text-object>
+            --
+            -- Select the next <textobject> when some
+            -- textobject is currently selected
+            -- inner: in<text-object>
+            -- outer: an<text-object>
+            local ai = require("mini.ai")
+            local spec_treesitter = require('mini.ai').gen_spec.treesitter
+            local ai_setup = {
+                search_method = 'cover_or_next',
+                custom_textobjects = {
+                    o = spec_treesitter({
+                        a = '@conditional.outer',
+                        i = '@conditional.inner',
+                    }),
+                    f = spec_treesitter({
+                        a = '@function.outer',
+                        i = '@function.inner'
+                    }),
+                    r = spec_treesitter({
+                        a = '@loop.outer',
+                        i = '@loop.inner'
+                    }),
+                    a = spec_treesitter({
+                        a = '@parameter.outer',
+                        i = '@parameter.inner'
+                    }),
+                    c = spec_treesitter({
+                        a = '@call.outer',
+                        i = '@call.inner',
+                    }),
+                }
+            }
+            ai.setup(ai_setup)
         end,
     }
 }

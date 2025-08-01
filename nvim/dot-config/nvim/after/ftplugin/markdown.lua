@@ -3,4 +3,4 @@ vim.opt_local.formatoptions:append('t')
 vim.opt_local.formatoptions:append('w')
 vim.opt_local.formatoptions:append('a')
 vim.opt_local.formatoptions:append('n')
-vim.opt_local.textwidth = 75
+vim.opt_local.textwidth = 85
