@@ -9,3 +9,5 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
         end
     end,
 })
+
+vim.b.miniindentscope_disable = true

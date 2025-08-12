@@ -189,6 +189,15 @@ screens = [
                     fmt='<span rise="7pt">{}</span>'
                     ),
                 widget.Spacer(length=5),
+                widget.NetUP(
+                        host="google.com",
+                        display_fmt='{0}',
+                        down_string='󰅛',
+                        down_foreground='FF0000',
+                        up_foreground='00FF00',
+                        up_string='󰱓'
+                    ),
+                widget.Spacer(length=10),
             ],
             # Size/thickness of the bar
             24,

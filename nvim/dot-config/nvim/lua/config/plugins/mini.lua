@@ -71,6 +71,26 @@ return {
                 }
             }
             ai.setup(ai_setup)
+
+
+            -- Configuration of indentscope
+            -- local indscope = require("mini.indentscope")
+            -- local indscope_setup = {
+            --     draw = {
+            --         delay = 200,
+            --
+            --
+            --
+            --
+            --     },
+            --     options = {
+            --         border = "both",
+            --         indent_at_cursor = false,
+            --         try_as_border = true
+            --     },
+            --     symbol = "┃"
+            -- }
+            -- indscope.setup(indscope_setup)
         end,
     }
 }
