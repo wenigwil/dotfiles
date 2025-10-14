@@ -5,6 +5,13 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         config = function()
             require 'nvim-treesitter.configs'.setup({
+
+                -- TODO: Config functionality for swap, move
+                -- and scopes
+                -- IDEA: moving between starts of calls and
+                -- so it is easier to then change and select
+                -- inner calls
+                -- Moving between starts of arguments
                 textobjects = {
                     select = {
                         enable = true,
@@ -17,6 +24,8 @@ return {
                             ["ir"] = "@loop.inner",
                             ["ac"] = "@call.outer",
                             ["ic"] = "@call.inner",
+                            ["aa"] = "@parameter.outer",
+                            ["ia"] = "@parameter.inner",
                         },
                     },
                 },
