@@ -44,7 +44,7 @@ return {
             tc_builtin.live_grep({
                 -- Search for types with
                 -- "rg --type-list | less"
-                type_filter = "fortran"
+                -- type_filter = "fortran"
             })
         end)
 

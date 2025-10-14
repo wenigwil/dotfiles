@@ -5,6 +5,22 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         config = function()
             require 'nvim-treesitter.configs'.setup({
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ar"] = "@loop.outer",
+                            ["ir"] = "@loop.inner",
+                            ["ac"] = "@call.outer",
+                            ["ic"] = "@call.inner",
+                        },
+                    },
+                },
+
                 -- A list of parser names, or "all" (the listed parsers MUST always be installed)
                 ensure_installed = {
                     "c",
