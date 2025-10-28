@@ -14,5 +14,5 @@ decorations = "None"
 normal = { family = "JetBrainsMono Nerdfont", style="Regular"}
 bold = { family = "JetBrainsMono Nerdfont", style="Bold"}
 italic = { family = "JetBrainsMono Nerdfont", style="Italic"}
-bold_italic = { family = "JetBrainsMono Nerdfont", style="BoldItalic"}
+bold_italic = { family = "JetBrainsMono Nerdfont", style="Bold Italic"}
 size = 13

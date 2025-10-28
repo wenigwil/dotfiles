@@ -6,7 +6,9 @@ return {
             transparent = false,
             terminal_colors = true,
             styles = {
-                functions = { bold = true },
+                functions = {
+                    bold = true,
+                },
             },
             dim_inactive = false,
         }
