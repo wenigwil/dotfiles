@@ -2,6 +2,7 @@ return {
     "folke/tokyonight.nvim",
     config = function()
         require('tokyonight').setup {
+            style = "moon",
             transparent = false,
             terminal_colors = true,
             styles = {

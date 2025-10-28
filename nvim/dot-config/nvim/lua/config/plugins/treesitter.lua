@@ -13,6 +13,16 @@ return {
                 -- inner calls
                 -- Moving between starts of arguments
                 textobjects = {
+                    move = {
+                        enable = true,
+                        set_jumps = true,
+                        goto_next_start = {
+                            ["]a"] = "@parameter.inner",
+                        },
+                        goto_previous_start = {
+                            ["[a"] = "@parameter.inner",
+                        },
+                    },
                     select = {
                         enable = true,
                         lookahead = true,
@@ -26,6 +36,7 @@ return {
                             ["ic"] = "@call.inner",
                             ["aa"] = "@parameter.outer",
                             ["ia"] = "@parameter.inner",
+                            ["is"] = "@local.scope"
                         },
                     },
                 },
