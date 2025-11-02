@@ -13,6 +13,16 @@ vim.opt.splitbelow = false
 vim.opt.expandtab = true
 vim.opt.signcolumn = "yes:1"
 
+
+
+vim.api.nvim_set_keymap("n", "`", "^", { noremap = true })
+vim.keymap.set("n", '<c-s-h>', ":wincmd 8 < <CR>")
+vim.keymap.set("n", '<c-s-l>', ":wincmd 8 > <CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+vim.keymap.set("n", "<c-q>", ":wincmd q<CR>")
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")

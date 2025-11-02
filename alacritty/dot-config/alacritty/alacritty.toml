@@ -11,8 +11,16 @@ decorations = "None"
 
 
 [font]
-normal = { family = "JetBrainsMono Nerdfont", style="Regular"}
-bold = { family = "JetBrainsMono Nerdfont", style="Bold"}
-italic = { family = "JetBrainsMono Nerdfont", style="Italic"}
-bold_italic = { family = "JetBrainsMono Nerdfont", style="Bold Italic"}
+normal = { family = "Iosevka Nerd Font", style="Medium"}
+bold = { family = "Iosevka Nerd Font", style="ExtraBold"}
+italic = { family =  "Iosevka Nerd Font", style="Medium Italic"}
+bold_italic = { family =  "Iosevka Nerd Font", style="ExtraBold Italic"}
 size = 13
+
+# normal = { family = "RecMonoLinear Nerd Font", style="Regular"}
+# bold = { family =  "RecMonoLinear Nerd Font Propo", style="Bold"}
+# italic = { family =  "RecMonoDuotone Nerd Font", style="Italic"}
+# bold_italic = { family =  "RecMonoDuotone Nerd Font", style="Bold"}
+
+
+

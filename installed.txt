@@ -72,8 +72,10 @@ toilet 0.3.r155.3eb9d58-3
 tree 2.2.1-1
 tree-sitter-cli 0.25.10-1
 ttf-hack-nerd 3.4.0-1
+ttf-iosevka-nerd 3.4.0-1
 ttf-jetbrains-mono 2.304-2
 ttf-jetbrains-mono-nerd 3.4.0-1
+ttf-recursive-nerd 3.4.0-1
 unicode-emoji 17.0-1
 unzip 6.0-23
 vim 9.1.1841-1
