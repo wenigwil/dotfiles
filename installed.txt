@@ -69,6 +69,7 @@ thunar 4.20.6-1
 thunderbird 144.0.1-1
 tldr 3.4.3-2
 toilet 0.3.r155.3eb9d58-3
+traceroute 2.1.6-1
 tree 2.2.1-1
 tree-sitter-cli 0.25.10-1
 ttf-hack-nerd 3.4.0-1
