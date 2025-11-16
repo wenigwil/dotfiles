@@ -17,6 +17,15 @@ return {
             store_selection_keys = "<Tab>",
         })
 
+
+        -- vim.cmd [[
+        --     " Use Tab to expand and jump through snippets
+        --     imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+        --     imap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : 'jk'
+        --     smap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : 'jk'
+        -- ]]
+
+
         -- Expand if expandable or jump
         vim.keymap.set("i", "<Tab>", function()
                 if ls.expand_or_jumpable() then
@@ -46,7 +55,7 @@ return {
             { silent = true })
 
         -- Jump back if jumpable
-        vim.keymap.set({ "i", "s" }, "<C-k>", function()
+        vim.keymap.set({ "i", "s" }, "<C-f>", function()
                 if ls.jumpable(-1) then
                     ls.jump(-1)
                 end

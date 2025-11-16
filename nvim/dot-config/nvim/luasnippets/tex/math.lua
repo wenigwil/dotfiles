@@ -1,7 +1,7 @@
 -- Get helper functions
 local helper = require("luasnip-helper-funcs")
 local get_visual = helper.get_visual
-
+local paste_capture1 = helper.paste_capture1
 
 local ls = require("luasnip")
 local s = ls.snippet
@@ -15,22 +15,21 @@ local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
 return {
-    s({ trig = "eq", dscr = "Expand into an equation environment" },
+    s(
+        {
+            trig = "uu",
+            wordTrig = false,
+            regTrig = true,
+            snippetType = "autosnippet",
+            condition = helper.in_mathzone
+        },
         fmta(
-            [[
-        \begin{equation}
-            <>
-        \end{equation}
-        <>
-        ]],
-            { i(1), i(0) }
+            "<>_{<>} <>",
+            {
+                f(paste_capture1),
+                i(1),
+                i(2),
+            }
         )
     ),
-
-    s({ trig = 'tii' },
-        fmta("\\textit{<>} <>",
-            { d(1, get_visual), i(0) }
-        )
-    ),
-
 }

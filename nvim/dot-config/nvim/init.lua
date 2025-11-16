@@ -16,8 +16,8 @@ vim.opt.signcolumn = "yes:1"
 
 
 vim.api.nvim_set_keymap("n", "`", "^", { noremap = true })
-vim.keymap.set("n", '<c-s-h>', ":wincmd 8 < <CR>")
-vim.keymap.set("n", '<c-s-l>', ":wincmd 8 > <CR>")
+vim.keymap.set("n", '<c-s-h>', ":wincmd 4 < <CR>")
+vim.keymap.set("n", '<c-s-l>', ":wincmd 4 > <CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
