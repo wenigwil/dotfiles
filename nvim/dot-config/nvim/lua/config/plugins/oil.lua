@@ -20,6 +20,8 @@ return {
                     end,
                 }
             })
+
+            vim.keymap.set("n", "-", "<cmd>Oil<CR>")
         end
     }
 }
