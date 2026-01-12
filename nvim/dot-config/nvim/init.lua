@@ -56,7 +56,6 @@ vim.keymap.set('n', '<space><C-M>', function()
     vim.api.nvim_open_win(bufnr, true, { vertical = true, split = "right", win = -1 })
     vim.cmd.term()
     local cwd = vim.uv.cwd()
-    print(cwd)
     local chanid = vim.bo[bufnr].channel
     vim.api.nvim_chan_send(chanid, "cd " .. cwd .. "; clear\r")
 end)
