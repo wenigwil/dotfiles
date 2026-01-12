@@ -6,3 +6,6 @@ vim.opt_local.formatoptions:append('n')
 vim.opt_local.textwidth = 85
 
 vim.b.miniindentscope_disable = true
+
+vim.opt_local.spell = true
+vim.opt_local.spelllang = "en_us"

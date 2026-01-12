@@ -58,7 +58,7 @@ return {
         snippets = { preset = 'luasnip' },
         -- Default source providers
         sources = {
-            default = { 'lsp', 'path' },
+            default = { 'lsp', 'path', 'omni' },
         },
         fuzzy = { implementation = "prefer_rust_with_warning" }
     },
