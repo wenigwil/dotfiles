@@ -36,6 +36,10 @@ return {
             })
         end)
 
+        vim.keymap.set("n", "<space>sm", function()
+            tc_builtin.man_pages()
+        end)
+
         vim.keymap.set("n", "<space>sf", function()
             tc_builtin.find_files()
         end)

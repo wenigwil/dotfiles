@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+# INSANE! Use nvim as your manpager!!!
+export MANPAGER="nvim +Man!"
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
