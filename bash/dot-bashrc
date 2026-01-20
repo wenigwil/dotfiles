@@ -136,7 +136,6 @@ alias cclip='xclip -selection "clipboard"'
 alias ll='ls --group-directories-first --no-group --human-readable -Ag'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias nexclosyn='nextcloudcmd --non-interactive -u wenigwil -p $(pass cloud/cloud.wenigwil.com) $HOME/wumbo https://cloud.wenigwil.com/'
 alias chsmalltex='codeheading "small" "%"'
 alias chbigtex='codeheading "big" "%"'
 

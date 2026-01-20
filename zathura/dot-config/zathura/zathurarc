@@ -1,5 +1,9 @@
+# See the docs and options at https://pwmt.org/projects/zathura/documentation/
+
 # set guioptions none
 set selection-clipboard clipboard
+# do not remember the input history
+set database "null"
 # set default-bg "#1f2335"
 
 map D set "first-page-column 1:1"
