@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This is the directory containing all the notes, appointments and todos
+notes_dir="$HOME/.local/share/calcurse"
+
+cd "$notes_dir" || exit 1
+
+if [ -e ".git" ] && [ -d ".git" ] && command -v git > /dev/null; then
+
+    git add .
+
+    # Check if it is necessary to commit
+    if ! git diff-index --quiet --cached HEAD; then
+        git commit -m "Commit by calcurse post-save hook"
+    else
+        exit 0
+    fi
+
+else
+    1>&2 echo "Error post-save: ""$notes_dir"" is not a git repository or git executable not in path!"
+    exit 1
+fi
+
+# This may be unsafe but it does not matter for now
+git push --quiet origin main
