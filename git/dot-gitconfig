@@ -1,0 +1,9 @@
+[user]
+	email = github@wenigwil.com
+	username = wenigwil
+	name = wenigwil
+[init]
+	defaultBranch = main
+[core]
+        editor = /sbin/nvim
+        pager = less -F
