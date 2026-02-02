@@ -22,6 +22,7 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "p", lazy.spawn("alacritty --command 'calcurse'"), desc="Launch calcurse"),
     Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
     Key([mod, "shift"], "h", lazy.layout.shrink_main(), desc="Grow window to the left"),
     Key([mod, "shift"], "l", lazy.layout.grow_main(), desc="Grow window to the right"),

@@ -1,3 +1,4 @@
 {
-        "styles": "~/.config/vivify/colors.css"
+        "styles": "~/.config/vivify/colors.css",
+    "mdFilePatterns": ["^.*calcurse-note\\.[a-zA-Z0-9]+.*"]
 }

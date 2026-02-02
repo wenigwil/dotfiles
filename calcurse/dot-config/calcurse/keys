@@ -52,5 +52,5 @@ flag-item  !
 repeat  r 
 edit-note  n N 
 view-note  > 
-raise-priority  + 
+raise-priority  = 
 lower-priority  - 
