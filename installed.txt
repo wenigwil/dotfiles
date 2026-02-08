@@ -5,7 +5,7 @@ base-devel 1-2
 bash-completion 2.17.0-3
 bash-language-server 5.6.0-1
 bc 1.08.2-1
-blender 17:5.0.1-3
+blender 17:5.0.1-5
 boost 1.89.0-4
 brlaser 6.2.7-1
 calcurse 4.8.2-1
@@ -13,7 +13,7 @@ cmake 4.2.3-1
 cuda 13.1.1-1
 cups 2:2.4.16-1
 cups-pdf 3.0.2-1
-discord 1:0.0.122-1
+discord 1:0.0.123-2
 dosfstools 4.2-5
 dunst 1.13.0-1
 efibootmgr 18-3
@@ -22,10 +22,10 @@ figlet 2.2.5-6
 firefox 147.0.2-1
 firefox-extension-passff 1.17.0-2
 firefox-tridactyl 1.24.4-1
-firefox-ublock-origin 1.68.0-1
+firefox-ublock-origin 1.69.0-1
 fuse2 2.9.9-5
 fzf 0.67.0-2
-git 2.52.0-2
+git 2.53.0-1
 gnu-free-fonts 20120503-9
 grub 2:2.14-1
 inkscape 1.4.3-2
@@ -39,7 +39,7 @@ lua-language-server 3.17.1-1
 ly 1.3.1-1
 man-db 2.13.1-1
 man-pages 6.16-1
-marksman 20251213-2
+marksman 20260128-1
 mtools 1:4.0.49-1
 neofetch 7.1.0-2
 neovim 0.11.6-1
@@ -47,7 +47,7 @@ networkmanager 1.54.3-1
 nitrogen 1.6.1-6
 noto-fonts 1:2026.02.01-1
 noto-fonts-emoji 1:2.051-1
-npm 11.7.0-1
+npm 11.8.0-1
 nvidia-580xx-dkms 580.119.02-2
 openssh 10.2p1-2
 os-prober 1.83-1
@@ -74,7 +74,7 @@ thunderbird 147.0.1-1
 tldr 3.4.3-3
 toilet 0.3.r155.3eb9d58-3
 traceroute 2.1.6-1
-tree 2.2.1-1
+tree 2.3.1-1
 tree-sitter-cli 0.25.10-3
 ttf-hack-nerd 3.4.0-2
 ttf-iosevka-nerd 3.4.0-2
@@ -84,7 +84,7 @@ ttf-recursive-nerd 3.4.0-2
 unicode-emoji 17.0-1
 unzip 6.0-23
 vim 9.1.2077-1
-vivify-git v0.12.0.r10.g0fee662-1
+vivify 0.13.0-1
 wget 1.25.0-3
 xclip 0.13-6
 xf86-video-nouveau 1.0.18-1
@@ -139,6 +139,6 @@ xorg-xwud 1.0.7-1
 yarn 1.22.22-2
 yay-git 12.5.7.r19.gfed2f218-1
 yay-git-debug 12.5.7.r19.gfed2f218-1
-zathura 0.5.14-1
-zathura-pdf-poppler 0.3.4-1
+zathura 2026.01.30-1
+zathura-pdf-poppler 2026.01.30-1
 zip 3.0-11
