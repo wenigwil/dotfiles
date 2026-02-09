@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+# Making bash completion available
+source /etc/profile.d/bash_completion.sh
+
 # INSANE! Use nvim as your manpager!!!
 export MANPAGER="nvim +Man!"
 export CALCURSE_PAGER="nvim"
