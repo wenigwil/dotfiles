@@ -5,6 +5,7 @@
 # INSANE! Use nvim as your manpager!!!
 export MANPAGER="nvim +Man!"
 export CALCURSE_PAGER="nvim"
+export CALCURSE_EDITOR="nvim"
 export EDITOR="nvim"
 
 # If not running interactively, don't do anything
@@ -159,5 +160,8 @@ export PATH="$HOME/.local/share/texlive/2025/bin/x86_64-linux":$PATH
 
 export PDFVIEWER='zathura'
 
+# Add nvim to path
 export PATH="$HOME/opt/neovim/build/bin":$PATH
 
+# Add vivify to path
+export PATH="$HOME/opt/Vivify/":$PATH
