@@ -5,5 +5,5 @@
 [init]
 	defaultBranch = main
 [core]
-        editor = /sbin/nvim
+        editor = nvim
         pager = less -F
