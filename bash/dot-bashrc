@@ -159,5 +159,5 @@ export PATH="/usr/local/texlive/2025/bin/x86_64-linux":$PATH
 
 export PDFVIEWER='zathura'
 
-export PATH="$HOME/neovim/build/bin":$PATH
+export PATH="$HOME/opt/neovim/build/bin":$PATH
 
