@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 vim.treesitter.start()
 
 vim.opt_local.shiftwidth = 4
+=======
+vim.opt_local.shiftwidth = 4
+vim.opt_local.commentstring = '# %s'
+>>>>>>> 02d747e (Added new comment string to julia. Strange one)
 
 vim.opt_local.formatoptions:append('c')
 vim.opt_local.formatoptions:append('o')
