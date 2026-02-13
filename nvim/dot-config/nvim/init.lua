@@ -16,8 +16,8 @@ vim.opt.signcolumn = "yes:1"
 
 
 vim.api.nvim_set_keymap("n", "`", "^", { noremap = true })
-vim.keymap.set("n", '<c-s-h>', ":wincmd 4 < <CR>")
-vim.keymap.set("n", '<c-s-l>', ":wincmd 4 > <CR>")
+vim.keymap.set("n", '<c-s-h>', ":wincmd 1 < <CR>")
+vim.keymap.set("n", '<c-s-l>', ":wincmd 1 > <CR>")
 -- Normal mode window switching
 vim.keymap.set("n", "<A-h>", "<C-w>h")
 vim.keymap.set("n", "<A-j>", "<C-w>j")
