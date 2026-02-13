@@ -15,7 +15,7 @@ normal = { family = "Iosevka Nerd Font", style="Medium"}
 bold = { family = "Iosevka Nerd Font", style="ExtraBold"}
 italic = { family =  "Iosevka Nerd Font", style="Medium Italic"}
 bold_italic = { family =  "Iosevka Nerd Font", style="ExtraBold Italic"}
-size = 12
+size = 11
 
 # normal = { family = "RecMonoLinear Nerd Font", style="Regular"}
 # bold = { family =  "RecMonoLinear Nerd Font Propo", style="Bold"}
