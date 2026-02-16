@@ -2,4 +2,5 @@
 # ~/.bash_profile
 #
 
+source /etc/profile.d/bash_completion.sh
 [[ -f ~/.bashrc ]] && . ~/.bashrc
