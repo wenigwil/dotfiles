@@ -141,6 +141,7 @@ alias grep='grep --color=auto'
 alias chsmalltex='codeheading "small" "%"'
 alias chbigtex='codeheading "big" "%"'
 alias gitlog='git --no-pager log --oneline --graph --all -n 10'
+alias longgitlog='git --no-pager log --oneline --graph --all -n 30'
 
 CYAF="\[$(tput setaf 6)\]"
 WHIF="\[$(tput setaf 7)\]"
