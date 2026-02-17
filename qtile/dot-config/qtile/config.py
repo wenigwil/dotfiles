@@ -50,6 +50,7 @@ def giveMonad(splitratio, automax = True):
         ratio = splitratio,
         new_client_position = "bottom",
         min_secondary_size = 130,
+        change_ratio=0.01
         )
 
 
