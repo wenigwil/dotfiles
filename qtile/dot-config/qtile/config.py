@@ -37,7 +37,7 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([mod], "XF86AudioLowerVolume", lazy.spawn("pacmd set-default-sink 1")),
-    Key([mod], "XF86AudioRaiseVolume", lazy.spawn("pacmd set-default-sink 2")),
+    Key([mod], "XF86AudioRaiseVolume", lazy.spawn("pacmd set-default-sink 3")),
 ]
 
 def giveMonad(splitratio, automax = True):
@@ -144,7 +144,7 @@ for index, i in enumerate(groups):
 
 widget_defaults = dict(
     font="JetBrains Mono Bold",
-    fontsize=13,
+    fontsize=18,
     padding=2,
 )
 extension_defaults = widget_defaults.copy()
@@ -154,7 +154,7 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.GroupBox(
-                    fontsize=14,
+                    fontsize=18,
                     block_highlight_text_color="ff007c",
                     center_aligned=True,
                     disable_drag=True,
@@ -166,7 +166,7 @@ screens = [
                     visible_groups=['Sys'],
                     ),
                 widget.GroupBox(
-                    fontsize=14,
+                    fontsize=18,
                     block_highlight_text_color="ff9e64",
                     center_aligned=True,
                     disable_drag=True,
@@ -190,19 +190,20 @@ screens = [
                     format="%A KW-%W %d.%m.%Y %H:%M:%S",
                     fmt='<span rise="7pt">{}</span>'
                     ),
-                widget.Spacer(length=5),
+                widget.Spacer(length=10),
                 widget.NetUP(
+                        fontsize=18,
                         host="google.com",
                         display_fmt='{0}',
-                        down_string='󰅛',
+                        down_string='󰅛 ',
                         down_foreground='FF0000',
                         up_foreground='00FF00',
-                        up_string='󰱓'
+                        up_string='󰱓 '
                     ),
-                widget.Spacer(length=10),
+                widget.Spacer(length=15),
             ],
             # Size/thickness of the bar
-            24,
+            32,
             background = "#292e42",
         ),
     ),
