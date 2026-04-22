@@ -17,4 +17,5 @@ vim.keymap.set({ 'n' }, "<F2>", function()
 end)
 
 vim.opt_local.spell = true
-vim.opt_local.spelllang = "en_us"
+-- vim.opt_local.spelllang = "en_us"
+vim.opt_local.spelllang = "de_20"
