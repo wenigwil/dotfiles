@@ -144,7 +144,7 @@ for index, i in enumerate(groups):
 
 widget_defaults = dict(
     font="JetBrains Mono Bold",
-    fontsize=18,
+    fontsize=13,
     padding=2,
 )
 extension_defaults = widget_defaults.copy()
@@ -154,7 +154,7 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.GroupBox(
-                    fontsize=18,
+                    fontsize=13,
                     block_highlight_text_color="ff007c",
                     center_aligned=True,
                     disable_drag=True,
@@ -166,7 +166,7 @@ screens = [
                     visible_groups=['Sys'],
                     ),
                 widget.GroupBox(
-                    fontsize=18,
+                    fontsize=13,
                     block_highlight_text_color="ff9e64",
                     center_aligned=True,
                     disable_drag=True,
@@ -192,7 +192,7 @@ screens = [
                     ),
                 widget.Spacer(length=10),
                 widget.NetUP(
-                        fontsize=18,
+                        fontsize=15,
                         host="google.com",
                         display_fmt='{0}',
                         down_string='󰅛 ',
@@ -203,7 +203,7 @@ screens = [
                 widget.Spacer(length=15),
             ],
             # Size/thickness of the bar
-            32,
+            23,
             background = "#292e42",
         ),
     ),
