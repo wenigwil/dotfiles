@@ -7,7 +7,7 @@ return {
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
     -- build = 'nix run .#build-plugin',
-    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.3.0' },
+    -- dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.3.0' },
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -55,7 +55,7 @@ return {
 
         },
         -- Use luasnip preset
-        snippets = { preset = 'luasnip' },
+        -- snippets = { preset = 'luasnip' },
         -- Default source providers
         sources = {
             default = { 'lsp', 'path', 'omni' },

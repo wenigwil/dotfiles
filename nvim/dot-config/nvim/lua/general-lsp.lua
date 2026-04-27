@@ -35,7 +35,7 @@ vim.lsp.config('*', {
             })
         end
 
-        if client:supports_method('textDocument/publishDiagnostics') then
+        if client:supports_method('textDocument/publishDiagnostic', bufnr) then
             local client_namespace = vim.lsp.diagnostic.get_namespace(client.id)
             vim.diagnostic.config({
                     virtual_text  = true,
@@ -53,4 +53,4 @@ vim.lsp.config('*', {
     end,
 })
 
-vim.lsp.enable({ "luals", "bashls", "latexls", "markdownls", "julials" })
+vim.lsp.enable({ "luals", "bashls", "markdownls", "julials", "latexls" })

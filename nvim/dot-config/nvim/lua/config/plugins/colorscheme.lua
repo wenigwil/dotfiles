@@ -2,9 +2,9 @@ return {
     "folke/tokyonight.nvim",
     config = function()
         require('tokyonight').setup {
-            style = "moon",
+            style = "night",
             transparent = false,
-            terminal_colors = true,
+            terminal_colors = false,
             styles = {
                 functions = {
                     bold = true,
@@ -19,6 +19,6 @@ return {
             },
             dim_inactive = false,
         }
-        vim.cmd.colorscheme "tokyonight"
+        vim.cmd.colorscheme("tokyonight")
     end
 }
