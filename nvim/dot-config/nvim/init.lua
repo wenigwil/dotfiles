@@ -13,7 +13,8 @@ vim.opt.splitbelow = false
 vim.opt.expandtab = true
 vim.opt.signcolumn = "yes:1"
 
-
+-- This here is an environment variable which would be set in vimscript via :let
+vim.env.tex_flavor = "latex"
 
 vim.api.nvim_set_keymap("n", "`", "^", { noremap = true })
 vim.keymap.set("n", '<c-s-h>', ":wincmd 4 < <CR>")

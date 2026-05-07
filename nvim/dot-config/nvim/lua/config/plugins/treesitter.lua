@@ -13,6 +13,7 @@ return {
 
             treesitter.install({
                 "c",
+                "cpp",
                 "lua",
                 "vim",
                 "vimdoc",

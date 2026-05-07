@@ -53,4 +53,4 @@ vim.lsp.config('*', {
     end,
 })
 
-vim.lsp.enable({ "luals", "bashls", "markdownls", "julials", "latexls" })
+vim.lsp.enable({ "luals", "bashls", "markdownls", "julials", "latexls", "cpp" })

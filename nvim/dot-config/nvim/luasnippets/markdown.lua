@@ -48,7 +48,7 @@ return {
             { d(1, get_visual), i(0) })
     ),
 
-    -- Promt
+    -- Prompt
     s({ trig = 'p' },
         fmta('`<>`<>',
             { d(1, get_visual), i(0) })

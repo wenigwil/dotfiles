@@ -1,8 +1,9 @@
-vim.opt_local.spell = true
-vim.opt_local.spelllang = "en_us"
 vim.opt_local.shiftwidth = 4
 vim.opt_local.textwidth = 85
 
+
+vim.opt_local.spelllang = "en"
+vim.opt_local.spell = true
 vim.opt_local.relativenumber = false
 vim.opt_local.cursorline = true
 
