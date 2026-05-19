@@ -2,8 +2,10 @@ from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+import os
 
-
+# set_headset='/user/bin/bash pacmd set-default-sink $(pacmd list-sinks | grep -nE -B 1 -e ^[[:space:]]*name[:].*output.*Logitech_PRO_X.* | head -n1 | rev | cut -w -f1)'
+# set_bose='/user/bin/bash pacmd set-default-sink $(pacmd list-sinks | grep -nE -B 1 -e ^[[:space:]]*name[:].*output.*Bose_Corp.* | head -n1 | rev | cut -w -f1)'
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -36,8 +38,8 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-    Key([mod], "XF86AudioLowerVolume", lazy.spawn("pacmd set-default-sink 1")),
-    Key([mod], "XF86AudioRaiseVolume", lazy.spawn("pacmd set-default-sink 2")),
+    Key([mod], "XF86AudioRaiseVolume", lazy.spawn(os.path.expanduser('~/.config/qtile/set-bose.sh'))),
+    Key([mod], "XF86AudioLowerVolume", lazy.spawn(os.path.expanduser('~/.config/qtile/set-headset.sh'))),
 ]
 
 def giveMonad(splitratio, automax = True):
