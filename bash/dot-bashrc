@@ -16,6 +16,43 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+compilecpp()
+{
+    argument=$1
+
+    prefix=$(gawk 'match($0, /([^[:space:]]+)[.]cpp/, prefix) {print prefix[1]}' <(echo "$argument"))
+
+    mkdir -p ./build
+
+    if g++ -Wall -Wpedantic -std=c++14 -o "./build/$prefix" "$argument"; then
+        return 0
+    else
+        return 1
+    fi
+
+}
+
+comprun()
+{
+    argument=$1
+
+    prefix=$(gawk 'match($0, /([^[:space:]]+)[.]cpp/, prefix) {print prefix[1]}' <(echo "$argument"))
+
+    if compilecpp "$argument"; then
+        binary_file="./build/$prefix"
+        if [ -f "$binary_file" ]; then
+            echo "COMPRUN: Compilation successful! Running $binary_file..."
+            echo
+            "$binary_file"
+        else
+            echo "COMPRUN ERROR: $binary_file is not a regular file."
+        fi
+    else
+        echo "COMPRUN: Error! Compilation failed."
+    fi
+
+}
+
 # Small function for copying codeheadings to clipboard
 codeheading()
 {

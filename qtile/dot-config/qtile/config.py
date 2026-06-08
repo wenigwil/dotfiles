@@ -4,8 +4,12 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os
 
-# set_headset='/user/bin/bash pacmd set-default-sink $(pacmd list-sinks | grep -nE -B 1 -e ^[[:space:]]*name[:].*output.*Logitech_PRO_X.* | head -n1 | rev | cut -w -f1)'
-# set_bose='/user/bin/bash pacmd set-default-sink $(pacmd list-sinks | grep -nE -B 1 -e ^[[:space:]]*name[:].*output.*Bose_Corp.* | head -n1 | rev | cut -w -f1)'
+
+# Pipeless commands for switching audio devices
+set_headset = "pacmd set-default-sink $(gawk \'{if(/^[[:space:]]name[:][[:space:]].*Logitech.*/){print number}else{f=$0; number=$NF}}\' <(pacmd list-sinks))"
+set_bose = "pacmd set-default-sink $(gawk \'{if(/^[[:space:]]name[:][[:space:]].*Bose_Corp.*/){print number}else{f=$0; number=$NF}}\' <(pacmd list-sinks))"
+
+
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -24,12 +28,14 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "p", lazy.spawn("alacritty --command 'calcurse'"), desc="Launch calcurse"),
     Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
     Key([mod, "shift"], "h", lazy.layout.shrink_main(), desc="Grow window to the left"),
     Key([mod, "shift"], "l", lazy.layout.grow_main(), desc="Grow window to the right"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod], "p", lazy.widget["pomodoro"].toggle_active(), desc="Activate Pomodoro"),
+    Key([mod, "control"], "p", lazy.widget["pomodoro"].toggle_break(), desc="Pomodoro break"),
+
 
     # Multimedia Keys
     Key([], "XF86AudioLowerVolume", lazy.spawn('pactl set-sink-volume $(pactl get-default-sink) -5%',shell=True)),
@@ -38,8 +44,8 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-    Key([mod], "XF86AudioRaiseVolume", lazy.spawn(os.path.expanduser('~/.config/qtile/set-bose.sh'))),
-    Key([mod], "XF86AudioLowerVolume", lazy.spawn(os.path.expanduser('~/.config/qtile/set-headset.sh'))),
+    Key([mod], "XF86AudioRaiseVolume", lazy.spawn(set_headset,shell=True)),
+    Key([mod], "XF86AudioLowerVolume", lazy.spawn(set_bose,shell=True)),
 ]
 
 def giveMonad(splitratio, automax = True):
@@ -186,7 +192,21 @@ screens = [
                     cursor_color='#292e42',
                     ),
                 widget.Spacer(length=bar.STRETCH),
-                widget.CurrentLayout(fmt='<span text_transform="uppercase" rise="7pt">{}</span>'),
+                widget.Pomodoro(color_active='ff0000',
+                                color_break='00ff00',
+                                color_inactive='ffffff',
+                                fmt='<span text_transform="uppercase" rise="7pt">{}</span>',
+                                prefix_active=' ',
+                                prefix_break=' ',
+                                prefix_long_break='  ',
+                                prefix_paused='  ',
+                                update_interval=5,
+                                length_pomodori=25,
+                                length_short_break=5,
+                                length_long_break=15,
+                                num_pomodori=4, # number of pomodori-shortbreak pairs
+                                ),
+                # widget.CurrentLayout(fmt='<span text_transform="uppercase" rise="7pt">{}</span>'),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Clock(
                     format="%A KW-%W %d.%m.%Y %H:%M:%S",
