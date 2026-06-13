@@ -1,0 +1,29 @@
+# Colors (Tokyo Night Storm variant)
+# Source https//github.com/zatchheems/tokyo-night-alacritty-theme
+
+# Default colors
+[colors.primary]
+background = '#24283b'
+foreground = '#f7f5f5'
+
+# Normal colors
+[colors.normal]
+black   = '#32344a'
+red     = '#7aa2f7'
+green   = '#9ece6a'
+yellow  = '#e0af68'
+blue    = '#f7768e'
+magenta = '#ad8ee6'
+cyan    = '#1793D1'
+white   = '#f7f5f5'
+
+# Bright colors
+[colors.bright]
+black   = '#444b6a'
+red     = '#7da6ff'
+green   = '#b9f27c'
+yellow  = '#ff9e64'
+blue    = '#ff7a93'
+magenta = '#bb9af7'
+cyan    = '#15a5ed'
+white   = '#f7f5f5'

@@ -3,7 +3,7 @@ xset dpms 3600 3600 3600
 xset -dpms
 xset r rate 260 30
 xdg-mime default org.pwmt.zathura.desktop application/pdf
-pacman -Qe > ~/dotfiles/installed.txt
+pacman -Qe > ~/dotfiles/installed-archcom.txt
 nitrogen --restore &
 picom &
 exec qtile start

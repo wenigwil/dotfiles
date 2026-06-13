@@ -1,0 +1,19 @@
+[general]
+import = [
+"themes/tokyo-fork.toml"
+]
+
+[window]
+opacity = 0.5
+padding = { x = 0, y = 0}
+dynamic_padding = false
+decorations = "None"
+
+
+[font]
+normal = { family = "Iosevka Nerd Font", style="Medium"}
+bold = { family = "Iosevka Nerd Font", style="ExtraBold"}
+italic = { family =  "Iosevka Nerd Font", style="Medium Italic"}
+bold_italic = { family =  "Iosevka Nerd Font", style="ExtraBold Italic"}
+size = 13
+
