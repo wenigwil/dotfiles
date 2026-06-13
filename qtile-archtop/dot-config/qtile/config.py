@@ -217,7 +217,7 @@ screens = [
                     ),
                 widget.Spacer(length=10),
                 widget.NetUP(
-                        fontsize=18,
+                        fontsize=32,
                         host="google.com",
                         display_fmt='{0}',
                         down_string='󰅛 ',
@@ -225,6 +225,16 @@ screens = [
                         up_foreground='00FF00',
                         up_string='󰱓 '
                     ),
+                widget.Battery(
+                    battery=0,
+                    charge_char='  ',
+                    discharge_char='󰂄',
+                    empty_char='󰂃',
+                    format="{percent:2.0%} {char}",
+                    foreground="00ff00",
+                    low_percentage=0.3,
+                    show_short_text = False,
+                        ),
                 widget.Spacer(length=15),
             ],
             # Size/thickness of the bar
