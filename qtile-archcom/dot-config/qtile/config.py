@@ -166,7 +166,7 @@ screens = [
                     block_highlight_text_color="ff007c",
                     center_aligned=True,
                     disable_drag=True,
-                    highlight_color='292e42',
+                    highlight_color='0e1017',
                     highlight_method='line',
                     this_current_screen_border='ff007c',
                     this_screen_border='ff007c',
@@ -178,7 +178,7 @@ screens = [
                     block_highlight_text_color="ff9e64",
                     center_aligned=True,
                     disable_drag=True,
-                    highlight_color='292e42',
+                    highlight_color='0e1017',
                     highlight_method='line',
                     this_current_screen_border='ff9e64',
                     this_screen_border='ff9e64',
@@ -189,7 +189,7 @@ screens = [
                     cursor=True,
                     cursorblink=0,
                     fmt='<span text_transform="uppercase" rise="7pt">{}</span>',
-                    cursor_color='#292e42',
+                    cursor_color='#0e1017',
                     ),
                 widget.Spacer(length=bar.STRETCH),
                 widget.Pomodoro(color_active='ff0000',
@@ -226,7 +226,8 @@ screens = [
             ],
             # Size/thickness of the bar
             32,
-            background = "#292e42",
+            #background = "#292e42",
+            background = "#0e1017"
         ),
     ),
 ]
