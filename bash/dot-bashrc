@@ -190,8 +190,15 @@ BOL="\[$(tput setaf bold)\]"
 PS1="${BOL}${MAGF}\u${WHIF}@${YELF}\h${WHIF}:${BLUF}\W${RES}${CYAF}\$${RES} "
 
 # Adding TeX related things to the path
-export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info":$INFOPATH
-export MANPATH="/usr/local/texlive/2025/texmf-dist/doc/man":$MANPATH
-export PATH="/usr/local/texlive/2025/bin/x86_64-linux":$PATH
+
+if [ "$HOSTNAME" = "archcom" ]; then
+    export INFOPATH="/usr/local/texlive/2025/texmf-dist/doc/info":$INFOPATH
+    export MANPATH="/usr/local/texlive/2025/texmf-dist/doc/man":$MANPATH
+    export PATH="/usr/local/texlive/2025/bin/x86_64-linux":$PATH
+elif [ "$HOSTNAME" = "archtop" ]; then
+    export INFOPATH="/usr/local/texlive/2026/texmf-dist/doc/info":$INFOPATH
+    export MANPATH="/usr/local/texlive/2026/texmf-dist/doc/man":$MANPATH
+    export PATH="/usr/local/texlive/2026/bin/x86_64-linux":$PATH
+fi
 
 export PDFVIEWER='zathura'
