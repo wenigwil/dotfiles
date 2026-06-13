@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Exec=/usr/lib/firefox/firefox --new-window %u
+Exec=/usr/sbin/firefox/ --new-window %u
 Terminal=false
 X-MultipleArgs=false
 Icon=firefox
