@@ -7,7 +7,7 @@ import os
 
 # Pipeless commands for switching audio devices
 set_headset = "pacmd set-default-sink $(gawk \'{if(/^[[:space:]]name[:][[:space:]].*Logitech.*/){print number}else{f=$0; number=$NF}}\' <(pacmd list-sinks))"
-set_bose = "pacmd set-default-sink $(gawk \'{if(/^[[:space:]]name[:][[:space:]].*Bose_Corp.*/){print number}else{f=$0; number=$NF}}\' <(pacmd list-sinks))"
+set_pci = "pacmd set-default-sink $(gawk \'{if(/^[[:space:]]name[:][[:space:]].*alsa_output[.]pci.*/){print number}else{f=$0; number=$NF}}\' <(pacmd list-sinks))"
 
 
 
@@ -45,7 +45,10 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([mod], "XF86AudioRaiseVolume", lazy.spawn(set_headset,shell=True)),
-    Key([mod], "XF86AudioLowerVolume", lazy.spawn(set_bose,shell=True)),
+    Key([mod], "XF86AudioLowerVolume", lazy.spawn(set_pci,shell=True)),
+    Key([], "XF86MonBrightnessUp", lazy.spawn('brightnessctl -q -n s +10%',shell=True)),
+    Key([], "XF86MonBrightnessDown", lazy.spawn('brightnessctl -q -n s 10%-',shell=True)),
+
 ]
 
 def giveMonad(splitratio, automax = True):

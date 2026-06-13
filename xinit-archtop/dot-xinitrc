@@ -5,5 +5,4 @@ xset r rate 260 30
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 pacman -Qe > ~/dotfiles/installed-archtop.txt
 nitrogen --restore &
-picom &
 exec qtile start
