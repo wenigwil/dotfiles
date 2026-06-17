@@ -4,7 +4,6 @@ Type=Application
 Exec=/usr/sbin/firefox/ --new-window %u
 Terminal=false
 X-MultipleArgs=false
-Icon=firefox
 StartupWMClass=firefox
 DBusActivatable=false
 Categories=GNOME;GTK;Network;WebBrowser;

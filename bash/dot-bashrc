@@ -69,7 +69,11 @@ codeheading()
         echo "CODEHEADING ERROR: First argument has be either small or big"
         return
     fi
-    figlet -k -f "$codeheadingfont" "$3" | sed "s/^/${2}${chspaces}/" | xclip -selection "clipboard"
+    # Inserting comment string with space and delete trailing space
+    # We remove trailing space such that this will not be a mess later in formatting
+    # comments
+    figlet -k -f "$codeheadingfont" "$3" | sed -E "s/^/${2}${chspaces}/" |
+        sed -E "s/[[:space:]]+$//" | xclip -selection "clipboard"
     echo "CODEHEADING: Copied the heading to clipboard"
 }
 
