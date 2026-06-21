@@ -25,7 +25,7 @@ local function exit_handler(success, error)
     end
 end
 
-function texdoc_build_main(main_filename)
+local function texdoc_build_main(main_filename)
     local working_dir = vim.uv.cwd()
     local main_file = vim.fs.joinpath(working_dir, main_filename)
     local output_dir = vim.fs.joinpath(working_dir, "out")
@@ -47,7 +47,7 @@ function texdoc_build_main(main_filename)
     })
 end
 
-function texdoc_clean(main_filename)
+local function texdoc_clean(main_filename)
     local working_dir = vim.uv.cwd()
     local main_file = vim.fs.joinpath(working_dir, main_filename)
     local output_dir = vim.fs.joinpath(working_dir, "out")
@@ -65,7 +65,7 @@ function texdoc_clean(main_filename)
     })
 end
 
-function texdoc_view_main(mainpdf_filename)
+local function texdoc_view_main(mainpdf_filename)
     local working_dir = vim.uv.cwd()
     local output_dir = vim.fs.joinpath(working_dir, "out")
     local pdf_file = vim.fs.joinpath(output_dir, mainpdf_filename)
@@ -78,6 +78,66 @@ function texdoc_view_main(mainpdf_filename)
     })
 end
 
+
+local function texlog_filter(mainlog_filename)
+    local working_dir = vim.uv.cwd()
+    local aux_dir = vim.fs.joinpath(working_dir, "aux")
+    local mainlog_file = vim.fs.joinpath(aux_dir, mainlog_filename)
+
+    local command = "texlogfilter " .. mainlog_file
+        -- In case the removal of colors is important
+        -- .. " | "
+        -- .. " sed -E \'s/\\x1B\\[([0-9]{1,3}((;[0-9]{1,3})*)?)?[m|K]//g\' "
+        .. " > "
+        .. mainlog_file .. ".filtered"
+
+    vim.api.nvim_echo({ { '  Filtering ' .. mainlog_filename .. '...', 'DiagnosticWarn' } }, true, {})
+    local jobid = vim.fn.jobstart(command, {
+        detach = true,
+        on_exit = exit_handler('✔  ' .. mainlog_filename .. ' filtered successfully!',
+            '✘ Error Filtering ' .. mainlog_filename .. '!. Exit Code: ')
+    })
+    vim.fn.jobwait({ jobid })
+end
+
+local function texlog_view(mainlog_filename)
+    local aux_dir = vim.fs.joinpath(vim.uv.cwd(), "aux")
+    local mainlog_file = vim.fs.joinpath(aux_dir, mainlog_filename)
+
+    -- We have to do some magic to get the necessary height and widht of the
+    -- filtered log for perfectly match
+    local cmd_filtered_log_height = { "gawk", 'END{print NR}', mainlog_file .. ".filtered" }
+    local cmd_filtered_log_width = { "gawk",
+        'BEGIN {temp=0} {if (temp<length) {temp=length}} END {print temp}',
+        mainlog_file .. ".filtered" }
+    local obj = vim.system(cmd_filtered_log_height, { text = true }):wait()
+    local height = tonumber(obj.stdout)
+    local obj = vim.system(cmd_filtered_log_width, { text = true }):wait()
+    local width = tonumber(obj.stdout)
+    local current_height = vim.api.nvim_win_get_height(0)
+    local bufnr = vim.api.nvim_create_buf(true, false)
+    vim.api.nvim_open_win(bufnr, true, {
+        anchor = "SW",
+        border = "rounded",
+        relative = "editor",
+        row = current_height,
+        col = 5,
+        title = "texlogfilter",
+        title_pos = "center",
+        width = width + 2,
+        height = height,
+    })
+    vim.cmd.edit(mainlog_file .. ".filtered")
+
+    -- Colorize by interpreting ANSI Termcodes
+    vim.api.nvim_open_term(0, {})
+end
+
+vim.keymap.set({ 'n' }, "<F2>", function()
+    texlog_filter("main.log")
+    texlog_view("main.log")
+end)
+
 -- Keymaps for the function from above
 vim.keymap.set({ 'n' }, "<F1>", function()
     -- Save before anything
@@ -85,12 +145,14 @@ vim.keymap.set({ 'n' }, "<F1>", function()
     texdoc_build_main("main.tex")
 end)
 
-vim.keymap.set({ 'n' }, "<F2>", function()
-    -- Save before anything
-    vim.cmd("write")
-    texdoc_clean("main.tex")
-end)
+
 
 vim.keymap.set({ 'n' }, "<F3>", function()
     texdoc_view_main("main.pdf")
+end)
+
+vim.keymap.set({ 'n' }, "<F5>", function()
+    -- Save before anything
+    vim.cmd("write")
+    texdoc_clean("main.tex")
 end)

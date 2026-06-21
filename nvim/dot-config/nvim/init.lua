@@ -69,7 +69,8 @@ vim.keymap.set('n', '<A-q>', function()
         -- Get the channelid to send input
         local chanid = vim.bo[bufnr].channel
         -- Send it to the terminal
-        vim.api.nvim_chan_send(chanid, "exit\r")
+        -- vim.api.nvim_chan_send(chanid, "exit\r")
+        vim.api.nvim_buf_delete(bufnr, { force = true, unload = false })
     else
         vim.api.nvim_win_close(0, false)
     end
