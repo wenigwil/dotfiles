@@ -86,9 +86,11 @@ unzip 6.0-23
 vim 9.2.0450-1
 vivify 0.13.0-1
 wget 1.25.0-4
+wireguard-tools 1.0.20260223-1
 xclip 0.13-6
 xf86-video-nouveau 1.0.18-1
 xf86-video-vesa 2.6.0-3
+xmlstarlet 1.6.1-6
 xorg-bdftopcf 1.1.2-1
 xorg-docs 1.7.3-3
 xorg-font-util 1.4.2-1

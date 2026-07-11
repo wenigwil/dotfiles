@@ -100,6 +100,23 @@ local function texlog_filter(mainlog_filename)
     vim.fn.jobwait({ jobid })
 end
 
+
+-- IDEA for improving upon this:
+-- For now I open a new window and receive only then the most updated version
+-- of the filtered log. If there is another compile with a window alread opened, the
+-- filtered log and more importantly the window itself will not be
+-- updated/resized. To get the most updated log I will have to close and reopen,
+-- which is fine for now.
+-- The idea for the future is that upon opening the window for the first time,
+-- F2 is remapped to a function that does a window resize and buffer refresh. I
+-- can see that the window resize will be easy but the buffer refresh will be
+-- tricky as the buffer displayed is not reading from the file anymore after the
+-- invocation of nvim_open_term(). Maybe there is a way of only opening a
+-- terminal and sending the filtered log with the ANSI termcodes into it with
+-- vim.fn.chansend. The only tricky thing there might be correct EOF character
+-- and also the escape sequence in the termcodes themselves. File checks would
+-- also be a good idea for gracefully failing. This could also be great for
+-- viewing compile logs when working with C++, Fortran or similar.
 local function texlog_view(mainlog_filename)
     local aux_dir = vim.fs.joinpath(vim.uv.cwd(), "aux")
     local mainlog_file = vim.fs.joinpath(aux_dir, mainlog_filename)
